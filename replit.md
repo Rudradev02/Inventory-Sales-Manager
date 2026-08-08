@@ -1,45 +1,50 @@
-# [Project name]
+# Stockroom
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+Stockroom is a Django inventory and sales management MVP for small teams. It tracks products, categories, stock levels, and sales in a responsive business workspace.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
-- `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+- `cd inventory_sales_manager && python manage.py runserver` — run the Django app locally
+- `cd inventory_sales_manager && python manage.py migrate` — apply SQLite migrations
+- `cd inventory_sales_manager && python manage.py seed_data` — create demo records
+- The Replit preview runs through the `Inventory Sales Manager` workflow on port 8000.
 
 ## Stack
 
-- pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+- Python 3, Django, SQLite, Django ORM
+- HTML5, CSS3, Bootstrap 5, Chart.js
+- Django built-in authentication
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `inventory_sales_manager/config/` — Django settings, URLs, and WSGI entry point
+- `inventory_sales_manager/inventory/` — categories, products, forms, dashboard, admin, and seed command
+- `inventory_sales_manager/sales/` — sales model, transactional stock reduction, forms, views, and admin
+- `inventory_sales_manager/templates/` — authenticated workspace, auth pages, and responsive UI templates
+- `inventory_sales_manager/static/css/app.css` — shared visual theme
+- `inventory_sales_manager/README.md` — setup, demo credentials, and feature overview
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- SQLite is the source of truth for this MVP, keeping setup portable and dependency-light.
+- Sale creation uses a database transaction and row locking before reducing inventory.
+- The dashboard derives revenue, stock, and activity values from live database queries.
+- Django templates and Bootstrap keep the UI easy to extend without a separate frontend build.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- Authenticated staff can review live business metrics, manage products and categories, and record sales.
+- Product SKUs are unique and low-stock thresholds surface items that need attention.
+- Sales store the creating user, preserve the selling price, and automatically reduce stock.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- Keep the app focused on the requested inventory and sales MVP; avoid adding infrastructure or services unless requested.
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- Run `makemigrations` when model fields change, then `migrate`; use `seed_data` for repeatable demo data.
 
 ## Pointers
 
-- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
+- `inventory_sales_manager/README.md` contains the full setup and demo instructions.
