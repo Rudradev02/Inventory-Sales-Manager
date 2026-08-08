@@ -30,13 +30,19 @@ The project demonstrates practical software development concepts including:
 
 ## 🛠️ Tech Stack
 
-> Update this section with the exact technologies used in the project.
+### Languages
 
-* **Programming Language:** Python
-* **Framework:** [Add framework]
-* **Frontend:** [Add frontend technology]
-* **Database:** [Add database]
-* **Tools:** Git, GitHub, VS Code
+* **TypeScript** - Primary development language
+* **HTML** - Application structure
+* **CSS** - Styling and responsive UI
+* **Python** - Backend/supporting functionality
+* **JavaScript** - Client-side functionality
+
+### Development
+
+* **Git & GitHub** - Version control
+* **VS Code** - Development environment
+
 
 ## 📋 Main Modules
 
@@ -85,7 +91,6 @@ python app.py
 
 ## 📸 Screenshots
 
-Add screenshots of the application here.
 
 Example:
 
